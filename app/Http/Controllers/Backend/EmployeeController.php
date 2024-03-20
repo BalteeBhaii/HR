@@ -11,7 +11,9 @@ class EmployeeController extends Controller
 
     public function index(Request $request){
 
-        return view('backend.employees.list');
+         $data['getRecord'] = User::getRecord();
+
+        return view('backend.employees.list', $data);
 
     }
 
