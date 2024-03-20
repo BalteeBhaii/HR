@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\EmployeeController;
 
 Route::get('/' , [AuthController::class , 'index']);
 Route::get('forgot-password', [AuthController::class, 'forgot_password']);
@@ -16,6 +17,7 @@ Route::post('login_post' , [AuthController::class, 'login_post']);
 Route::middleware([AdminMiddleware::class])->group(function(){
 
     Route::get('admin/dashboard', [DashboardController::class , 'dashboard']);
+    Route::get('/admin/employees' , [EmployeeController::class , 'index']);
 
 });
 
