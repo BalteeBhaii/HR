@@ -17,7 +17,9 @@ Route::post('login_post' , [AuthController::class, 'login_post']);
 Route::middleware([AdminMiddleware::class])->group(function(){
 
     Route::get('admin/dashboard', [DashboardController::class , 'dashboard']);
-    Route::get('/admin/employees' , [EmployeeController::class , 'index']);
+    Route::get('admin/employees' , [EmployeeController::class , 'index']);
+    Route::get('admin/employees/add', [EmployeeController::class, 'add']);
+    Route::post('admin/employees/add' , [EmployeeController::class, 'add_post']);
 
 });
 
