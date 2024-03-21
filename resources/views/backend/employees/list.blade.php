@@ -90,11 +90,14 @@
                                                 <td>{{ $value->name ?? '' }}</td>
                                                 <td>{{ $value->last_name ?? '' }}</td>
                                                 <td>{{ $value->email ?? '' }}</td>
-                                                <td>{{ !empty($value->is_role) ? 'HR' : 'Employees' }}</td>
+                                                <td><span class="{{ !empty($value->is_role) ? 'badge bg-warning text-dark' : 'badge bg-info text-dark' }}">
+                                                    {{ !empty($value->is_role) ? 'HR' : 'Employee' }}
+                                                </span></td>
                                                 <td>
-                                                    <a href="" class="btn btn-info">View</a>
-                                                    <a href="" class="btn btn-primary">Edit</a>
-                                                    <a href="" class="btn btn-danger">Delete</a>
+                                                    <a href="{{ url('admin/employees/view/'.$value->id) }}" class="btn btn-info">View</a>
+                                                    <a href="{{ url('admin/employees/edit/'.$value->id) }}" class="btn btn-primary">Edit</a>
+                                                    <a href="{{ url('admin/employees/delete/'.$value->id) }}" class="btn btn-danger"
+                                                        onclick="return confirm('Are you sure you want to delete?')">Delete</a>
                                                 </td>
                                             </tr>
                                            @empty
