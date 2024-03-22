@@ -74,10 +74,10 @@
                                 <div class="form-group row">
                                     <label for="" class="col-sm-2 col-form-label">Job Title <span style="color:red">*</span> </label>
                                     <div class="col-sm-10">
-                                    <select name="job_id" id="" class="form-control" required >
-                                        <option value="">Select Job Title</option>
-                                        <option value="1" {{ $getRecord->job_id == '1' ? 'selected' : '' }}>Web Developer</option>
-                                        <option value="2" {{ $getRecord->job_id == '2' ? 'selected' : '' }}>PDF Developer</option>
+                                    <select name="job_id" id="" class="form-control" required>
+                                        @foreach($getJobs as $value)
+                                        <option value="{{ $value->id }}"{{ $value->id == $getRecord->job_id ? 'selected' : '' }}>{{ $value->job_title }}</option>
+                                        @endforeach
                                     </select>
                                     <span style="color:red">{{ $errors->first('job_id') }}</span>
                                     </div>

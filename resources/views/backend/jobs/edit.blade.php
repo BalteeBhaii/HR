@@ -12,7 +12,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Add</a></li>
+                        <li class="breadcrumb-item"><a href="#">Edit</a></li>
                         <li class="breadcrumb-item active">Jobs </li>
                     </ol>
                 </div><!-- /.col -->
@@ -26,10 +26,9 @@
                 <div class="col-md-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Add Jobs</ h3>
+                            <h3 class="card-title">Edit Jobs</ h3>
                         </div>
-                        <form action="{{ url('admin/jobs/add') }}" class="form-horizontal" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ url('admin/jobs/edit/'.$getRecord->id) }}" class="form-horizontal" method="POST">
                             {{ csrf_field() }}
                             <div class="card-body">
 
@@ -38,7 +37,7 @@
                                             style="color: red">*</span></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="job_title" required
-                                            placeholder="Enter Job Title" value="{{ old('job_title') }}">
+                                            placeholder="Enter Job Title" value="{{ $getRecord->job_title }}">
                                         <span style="color:red">{{ $errors->first('job_title') }}</span>
                                     </div>
                                 </div>
@@ -47,7 +46,7 @@
                                     <label for="" class="col-sm-2 col-form-label">Min Salary <span style="color:red">*</span></label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" name="min_salary"
-                                            placeholder="Enter Min salary" value="{{ old('min_salary') }}">
+                                            placeholder="Enter Min salary" value="{{ $getRecord->min_salary }}">
                                             <span class="color:red">{{ $errors->first('min_salary') }}</span>
                                     </div>
                                 </div>
@@ -57,9 +56,9 @@
                                             style="color:red">*</span> </label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" name="max_salary" required
-                                            placeholder="Enter Max Salary" value="{{ old('max_salary') }}">
+                                            placeholder="Enter Max Salary" value="{{ $getRecord->max_salary }}">
                                             <span style="color:red">{{ $errors->first('max_salary') }}</span>
-                                        <span style="color:red">{{ $errors->first('email') }}</span>
+                                        <span style="color:red">{{ $errors->first('max_salary') }}</span>
 
                                     </div>
                                 </div>
@@ -69,7 +68,7 @@
                             <div class="card-footer">
                                 <a href="{{ url('admin/jobs') }}" class="btn btn-default">Back</a>
 
-                                <button type="submit" class="btn btn-primary float-right">Add</button>
+                                <button type="submit" class="btn btn-primary float-right">Update</button>
                             </div>
 
                     </div>

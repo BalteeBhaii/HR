@@ -77,8 +77,9 @@
                                     <div class="col-sm-10">
                                     <select name="job_id" id="" class="form-control" required  >
                                         <option value="">Select Job Title</option>
-                                        <option value="1">Web Developer</option>
-                                        <option value="2">PDF Developer</option>
+                                        @foreach($getJobs as $value)
+                                            <option value="{{ $value->id }}">{{ $value->job_title }}</option>
+                                        @endforeach
                                     </select>
                                     <span style="color:red">{{ $errors->first('job_id') }}</span>
                                     </div>

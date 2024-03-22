@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Request;
+use App\Models\EmployeeJob;
 
 class User extends Authenticatable
 {
@@ -71,5 +72,9 @@ class User extends Authenticatable
 
         return $return;
 
+    }
+
+    public function get_job_single(){
+        return $this->belongsTo(EmployeeJob::class , 'job_id');
     }
 }

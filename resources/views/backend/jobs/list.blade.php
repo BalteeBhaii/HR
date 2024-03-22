@@ -18,7 +18,7 @@
     </div>
 
 
-    <section class="content ">
+    <section class="content">
         <div class="contianer-fluid">
 
             <div class="row">
@@ -28,7 +28,7 @@
                             <h3 class="card-title">Search Jobs</h3>
                         </div>
 
-                        <form action="" method="GET">
+                        <form action="{{ url('admin/jobs') }}" method="GET">
                             <div class="card-body">
                                 <div class="row">
 
@@ -87,23 +87,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @forelse ($getRecord  as $value )
                                     <tr>
-                                        <td>1</td>
-                                        <td>Web Developer</td>
-                                        <td>120000</td>
-                                        <td>400000</td>
-                                        <td>30/22/22</td>
+                                        <td>{{ $value->id }}</td>
+                                        <td>{{ $value->job_title }}</td>
+                                        <td>{{ $value->min_salary }}</td>
+                                        <td>{{ $value->max_salary }}</td>
+                                        <td>{{ date('d-m-Y' , strtotime($value->created_at)) }}</td>
                                         <td>
-                                            <a href="" class="btn btn-info">View</a>
-                                            <a href="" class="btn btn-primary">Edit</a>
-                                            <a href="" class="btn btn-danger"
+                                            <a href="{{ url('admin/jobs/view/'.$value->id) }}" class="btn btn-info">View</a>
+                                            <a href="{{ url('admin/jobs/edit/'.$value->id) }}" class="btn btn-primary">Edit</a>
+                                            <a href="{{ url('admin/jobs/delete/'.$value->id) }}" class="btn btn-danger"
                                                 onclick="return confirm('Are you sure you want to delete?')">Delete</a>
                                         </td>
                                     </tr>
+                                    @empty
 
                                     <tr>
                                         <td colspan="100%">No Record Found....</td>
                                     </tr>
+
+                                    @endforelse
 
                                 </tbody>
 
