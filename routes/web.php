@@ -6,6 +6,7 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\Backend\JobController;
+use App\Http\Controllers\Backend\JobHistoryController;
 
 
 
@@ -21,6 +22,7 @@ Route::post('login_post' , [AuthController::class, 'login_post']);
 // Admin HR
 Route::middleware([AdminMiddleware::class])->group(function(){
 
+    // Employee
     Route::get('admin/dashboard', [DashboardController::class , 'dashboard']);
     Route::get('admin/employees' , [EmployeeController::class , 'index']);
     Route::get('admin/employees/add', [EmployeeController::class, 'add']);
@@ -38,6 +40,11 @@ Route::middleware([AdminMiddleware::class])->group(function(){
     Route::get('admin/jobs/edit/{id}' , [JobController::class, 'edit']);
     Route::post('admin/jobs/edit/{id}' , [JobController::class, 'edit_update']);
     Route::get('admin/jobs/delete/{id}' ,[JobController::class, 'delete']);
+    Route::get('admin/jobs_export' , [JobController::class, 'job_export']);
+
+    // Job history
+    Route::get('admin/job_history' , [JobHistoryController::class , 'index']);
+    Route::get('admin/job_history/add' , [JobHistoryController::class, 'add']);
 
 });
 

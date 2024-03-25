@@ -10,6 +10,15 @@
                     <h1 class="m-0">Jobs</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6" style="text-align: right;">
+
+
+                    <form action="{{ url('admin/jobs_export') }}" method="GET">
+                        <input type="hidden" name="start_date" value="{{ Request()->start_date }}">
+                        <input type="hidden" name="end_date" value="{{ Request()->end_date }}">
+                        <a  href="{{ url('admin/jobs_export?start_date='.Request::get('start_date').'&end_date='.Request::get('end_date')) }}" class="btn btn-success">Excel Export</a>
+                    </form>
+                    <br>
+
                     <a href="{{ url('admin/jobs/add') }}" class="btn btn-primary">Add Jobs</a>
 
                 </div><!-- /.col -->
@@ -51,9 +60,21 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label for="">Min Salary</label>
+                                        <label for="">Max Salary</label>
                                         <input type="number" name="max_salary" class="form-control"
                                             placeholder="Enter Max Salary" value="{{ Request()->max_salary }}">
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="">From Date (Start Date)</label>
+                                        <input type="date" name="start_date" class="form-control"
+                                             value="{{ Request()->start_date }}">
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="">To Date (End Date)</label>
+                                        <input type="date" name="end_date" class="form-control"
+                                             value="{{ Request()->end_date }}">
                                     </div>
 
                                     <div class="form-group col-md-2">

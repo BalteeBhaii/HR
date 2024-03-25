@@ -12,7 +12,7 @@ class EmployeeJob extends Model
     protected $table = 'employeejobs';
 
 
-    static public function getRecord() {
+    static public function getRecord($request) {
 
         $return = self::select('employeejobs.*');
 
@@ -33,6 +33,18 @@ class EmployeeJob extends Model
         if (!empty(Request::get('max_salary'))) {
             $maxSalary = intval(Request::get('max_salary'));
             $return = $return->whereRaw('CAST(max_salary AS UNSIGNED) <= ?', [$maxSalary]);
+        }
+
+        if(!empty(Request::get('start_date')) && !empty(Request::get('end_date'))){
+            $startDate = date('Y-m-d' , strtotime(Request::get('start_date')));
+            $endDate = date('Y-m-d' , strtotime(Request::get('end_date')));
+
+            // adding by 1 so it getting proper result
+            $endDate = date('Y-m-d' , strtotime($endDate . '+1 day'));
+
+            if($startDate <= $endDate){
+                $return = $return->where('created_at' ,'>=' , $startDate)->where('created_at' , '<=' , $endDate);
+            }
         }
 
         $return = $return->orderBy('id', 'desc')->paginate(20);

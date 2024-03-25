@@ -5,15 +5,21 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\EmployeeJob;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\JobsExport;
 
 class JobController extends Controller
 {
 
     public function index(Request $request){
 
-         $data['getRecord'] = EmployeeJob::getRecord();
+         $data['getRecord'] = EmployeeJob::getRecord($request);
         return view('backend.jobs.list', $data);
 
+    }
+
+    public function job_export(Request $request){
+        return Excel::download(new JobsExport , 'jobs.xlsx');
     }
 
     public function add(){
