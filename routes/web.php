@@ -45,6 +45,11 @@ Route::middleware([AdminMiddleware::class])->group(function(){
     // Job history
     Route::get('admin/job_history' , [JobHistoryController::class , 'index']);
     Route::get('admin/job_history/add' , [JobHistoryController::class, 'add']);
+    Route::post('admin/job_history/add' , [JobHistoryController::class, 'add_post']);
+    Route::get('admin/job_history/edit/{id}' , [JobHistoryController::class, 'edit']);
+    Route::post('admin/job_history/edit/{id}' , [JobHistoryController::class, 'edit_update']);
+    Route::get('admin/job_history/delete/{id}' , [JobHistoryController::class, 'delete']);
+    Route::get('admin/job_history_export' , [JobHistoryController::class, 'job_history_export']);
 
 });
 
