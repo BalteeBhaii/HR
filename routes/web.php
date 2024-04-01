@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\Backend\JobController;
 use App\Http\Controllers\Backend\JobHistoryController;
+use App\Http\Controllers\Backend\JobGradesController;
 
 
 
@@ -33,7 +34,7 @@ Route::middleware([AdminMiddleware::class])->group(function(){
     Route::get('/admin/employees/delete/{id}', [EmployeeController::class, 'delete']);
 
     // job routes
-    Route::get('admin/jobs', [Jobcontroller::class , 'index']);
+Route::get('admin/jobs', [Jobcontroller::class , 'index']);
     Route::get('admin/jobs/add' , [JobController::class, 'add']);
     Route::post('admin/jobs/add' , [JobController::class, 'add_post']);
     Route::get('admin/jobs/view/{id}' , [JobController::class, 'view']);
@@ -51,6 +52,19 @@ Route::middleware([AdminMiddleware::class])->group(function(){
     Route::get('admin/job_history/delete/{id}' , [JobHistoryController::class, 'delete']);
     Route::get('admin/job_history_export' , [JobHistoryController::class, 'job_history_export']);
 
+    // Job Gades route start
+
+    Route::get('admin/job_grades' , [JobGradesController::class, 'index']);
+    Route::get('admin/job_grades/add' , [JobGradesController::class, 'add']);
+    Route::post('admin/job_grades/add' , [JobGradesController::class, 'add_post']);
+    Route::get('admin/job_grades/edit/{id}' , [JobGradesController::class, 'edit']);
+    Route::post('admin/job_grades/edit/{id}' , [JobGradesController::class, 'edit_update']);
+    Route::get('admin/job_grades/delete/{id}' , [JobGradesController::class, 'delete']);
+
+
+
+
 });
+
 
 Route::get('logout', [AuthController::class, 'logout']);
