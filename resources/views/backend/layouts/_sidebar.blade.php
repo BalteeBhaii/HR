@@ -110,7 +110,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/regions') }}" class="nav-link">
+                    <a href="{{ url('admin/regions') }}" class="nav-link @if(Request::segment(2) == 'regions') active @endif" >
                         <i class="nav-icon fa fa-asterisk"></i>
                         <p>Regions</p>
                     </a>

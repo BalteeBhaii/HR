@@ -68,7 +68,7 @@ x
                             <div class="card-footer">
                                 <a href="{{ url('admin/job_grades') }}" class="btn btn-default">Back</a>
 
-                                <button type="submit" class="btn btn-primary float-right">Add</button>
+                                <button type="submit" class="btn btn-primary float-right">Edit</button>
                             </div>
                         </form>
                     </div>
