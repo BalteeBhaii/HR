@@ -9,6 +9,8 @@ use App\Http\Controllers\Backend\JobController;
 use App\Http\Controllers\Backend\JobHistoryController;
 use App\Http\Controllers\Backend\JobGradesController;
 use App\Http\Controllers\Backend\RegionController;
+use App\Http\Controllers\Backend\CountryController;
+use App\Http\Controllers\Backend\LocationController;
 
 
 
@@ -71,6 +73,18 @@ Route::get('admin/jobs', [Jobcontroller::class , 'index']);
     Route::post('admin/regions/edit/{id}' , [RegionController::class, 'edit_update']);
     Route::get('admin/regions/delete/{id}' , [RegionController::class, 'delete']);
 
+    // counteries
+    Route::get('admin/countries' , [CountryController::class , 'index']);
+    Route::get('admin/countries/add' , [CountryController::class, 'add']);
+    Route::post('admin/countries/add' , [CountryController::class, 'add_post']);
+    Route::get('admin/countries/edit/{id}' , [CountryController::class, 'edit']);
+    Route::post('admin/countries/edit/{id}' , [CountryController::class, 'edit_update']);
+    Route::get('admin/countries/delete/{id}' , [CountryController::class, 'delete']);
+
+    // Locations
+    Route::get('admin/locations' , [LocationController::class , 'index']);
+    Route::get('admin/locations/add' , [LocationController::class, 'add']);
+    Route::post('admin/locations/add' , [LocationController::class, 'add_post']);
 
 
 });
