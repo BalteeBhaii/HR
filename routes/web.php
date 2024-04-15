@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\JobGradesController;
 use App\Http\Controllers\Backend\RegionController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\LocationController;
+use App\Http\Controllers\Backend\DepartmentController;
 
 
 
@@ -89,6 +90,14 @@ Route::get('admin/jobs', [Jobcontroller::class , 'index']);
     Route::post('admin/locations/edit/{id}' , [LocationController::class, 'edit_update']);
     Route::get('admin/locations/delete/{id}' , [LocationController::class, 'delete']);
 
+
+    // Department
+    Route::get('admin/departments' , [DepartmentController::class ,'index']);
+    Route::get('admin/departments/add' , [DepartmentController::class, 'add']);
+    Route::post('admin/departments/add' , [DepartmentController::class, 'add_post']);
+    Route::get('admin/departments/edit/{id}' , [DepartmentController::class, 'edit']);
+    Route::post('admin/departments/edit/{id}' , [DepartmentController::class, 'edit_update']);
+    Route::get('admin/departments/delete/{id}' , [DepartmentController::class, 'delete']);
 });
 
 

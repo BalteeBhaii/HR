@@ -22,6 +22,7 @@ class EmployeeController extends Controller
     public function add(Request $request){
 
         $data['getJobs'] = EmployeeJob::get();
+        return $data;
         return view('backend.employees.add' ,$data);
     }
 

@@ -111,7 +111,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/departments') }}" class="nav-link">
+                    <a href="{{ url('admin/departments') }}" class="nav-link @if(Request::segment(2) == 'departments') active @endif">
                         <i class="nav-icon fa fa-building"></i>
                         <p>Departments</p>
                     </a>
