@@ -85,9 +85,12 @@ Route::get('admin/jobs', [Jobcontroller::class , 'index']);
     Route::get('admin/locations' , [LocationController::class , 'index']);
     Route::get('admin/locations/add' , [LocationController::class, 'add']);
     Route::post('admin/locations/add' , [LocationController::class, 'add_post']);
-
+    Route::get('admin/locations/edit/{id}' , [LocationController::class, 'edit']);
+    Route::post('admin/locations/edit/{id}' , [LocationController::class, 'edit_update']);
+    Route::get('admin/locations/delete/{id}' , [LocationController::class, 'delete']);
 
 });
+
 
 
 Route::get('logout', [AuthController::class, 'logout']);

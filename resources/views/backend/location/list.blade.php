@@ -47,11 +47,11 @@
                                     @forelse ($getRecord  as $value )
                                     <tr>
                                         <td>{{ $value->id }}</td>
-                                        <td>{{ $value->id }}</td>
-                                        <td>{{ $value->id }}</td>
-                                        <td>{{ $value->id }}</td>
-                                        <td>{{ $value->id }}</td>
-                                        <td>{{ $value->id }}</td>
+                                        <td>{{ $value->street_address }}</td>
+                                        <td>{{ $value->postal_code }}</td>
+                                        <td>{{ $value->city }}</td>
+                                        <td>{{ $value->state_province }}</td>
+                                        <td>{{ $value->country_name }}</td>
 
                                         <td>
                                             <a href="{{ url('admin/locations/edit/'.$value->id) }}" class="btn btn-primary">Edit</a>

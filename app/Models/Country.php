@@ -14,4 +14,5 @@ class Country extends Model
     public function get_region_name(){
         return $this->belongsTo(Region::class , 'region_id');
     }
+
 }
