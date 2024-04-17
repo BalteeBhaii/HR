@@ -108,8 +108,9 @@
                                     <div class="col-sm-10">
                                     <select name="manager_id" id="" class="form-control" required>
                                         <option value="">Select Manager Name</option>
-                                        <option value="1">Mohsin</option>
-                                        <option value="2">Ali Haider</option>
+                                        @foreach($getManager as $value)
+                                        <option value="{{ $value->id }}">{{ $value->manager_name }}</option>
+                                        @endforeach
                                     </select>
                                     <span style="color:red">{{ $errors->first('manager_id') }}</span>
 
@@ -122,8 +123,9 @@
                                     <div class="col-sm-10">
                                     <select name="department_id" id="" class="form-control" required>
                                         <option value="">Select Department Name</option>
-                                        <option value="1">LIMS</option>
-                                        <option value="2">GPI</option>
+                                        @foreach ($getDepartment as $value)
+                                            <option value="{{ $value->id }}">{{ $value->department_name }}</option>
+                                        @endforeach
                                     </select>
                                     <span style="color:red">{{ $errors->first('department_id') }}</span>
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\EmployeeJob;
 use App\Models\JobHistory;
+use App\Models\Department;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\JobHistoryExport;
 
@@ -29,6 +30,7 @@ class JobHistoryController extends Controller
 
         $data['getJobs'] = EmployeeJob::get();
         $data['getEmployees'] = User::where('is_role' , 0)->get();
+        $data['getDepartment'] = Department::get();
         return view('backend.job_history.add', $data);
 
     }
@@ -59,6 +61,7 @@ class JobHistoryController extends Controller
         $data['getEmployees'] = User::where('is_role' , 0)->get();
         $data['getJobs'] = EmployeeJob::get();
         $data['getRecord'] = JobHistory::find($id);
+        $data['getDepartment'] = Department::get();
 
 
         return view('backend.job_history.edit', $data);

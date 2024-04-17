@@ -99,14 +99,14 @@
                                 <div class="form-group row">
                                     <label for="" class="col-sm-2 col-form-label">Manager Id</label>
                                     <div class="col-sm-10">
-                                        {{ $getRecord->manager_id }}
+                                        {{ !empty($getRecord->get_manager_single->manager_name) ? $getRecord->get_manager_single->manager_name : '' }}
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="" class="col-sm-2 col-form-label">Department ID</label>
                                     <div class="col-sm-10">
-                                        {{ $getRecord->department_id }}
+                                        {{ !empty($getRecord->get_department_single->department_name) ? $getRecord->get_department_single->department_name : '' }}
                                     </div>
                                 </div>
 

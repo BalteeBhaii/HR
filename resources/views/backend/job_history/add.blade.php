@@ -88,9 +88,10 @@ x
                                             style="color:red">*</span></label>
                                     <div class="col-sm-10">
                                         <select name="department_id" id="department_id" class="form-control">
-                                            <option value="">Department</option>
-                                            <option value="0">Lims</option>
-                                            <option value="1">GPI</option>
+                                            <option value="">Select Department</option>
+                                            @foreach ($getDepartment as $value)
+                                                <option value="{{ $value->id }}">{{ $value->department_name }}</option>
+                                            @endforeach
                                         </select>
                                         <span class="color:red">{{ $errors->first('end_date') }}</span>
                                     </div>

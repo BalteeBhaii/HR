@@ -12,6 +12,8 @@ use App\Http\Controllers\Backend\RegionController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\DepartmentController;
+use App\Http\Controllers\Backend\ManagerController;
+use App\Http\Controllers\Backend\MyAccountController;
 
 
 
@@ -98,6 +100,20 @@ Route::get('admin/jobs', [Jobcontroller::class , 'index']);
     Route::get('admin/departments/edit/{id}' , [DepartmentController::class, 'edit']);
     Route::post('admin/departments/edit/{id}' , [DepartmentController::class, 'edit_update']);
     Route::get('admin/departments/delete/{id}' , [DepartmentController::class, 'delete']);
+
+    // Manager
+    Route::get('admin/manager' , [ManagerController::class , 'index']);
+    Route::get('admin/manager/add' , [ManagerController::class, 'add']);
+    Route::post('admin/manager/add' , [ManagerController::class, 'add_post']);
+    Route::get('admin/manager/edit/{id}' , [ManagerController::class, 'edit']);
+    Route::post('admin/manager/edit/{id}' , [ManagerController::class, 'edit_post']);
+    Route::get('admin/manager/delete/{id}' , [ManagerController::class, 'delete']);
+
+    // My account
+    Route::get('admin/my_account', [MyAccountController::class , 'index']);
+    Route::post('admin/my_account/update', [MyAccountController::class, 'update']);
+
+
 });
 
 

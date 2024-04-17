@@ -105,23 +105,24 @@
                                     <label for="" class="col-sm-2 col-form-label">Manager Name <span style="color:red">*</span> </label>
                                     <div class="col-sm-10">
                                     <select name="manager_id" id="" class="form-control" required>
-                                        <option value="">Select Manager Name</option>
-                                        <option value="1"{{ $getRecord->manager_id == '1' ? 'selected' : '' }}>Mohsin</option>
-                                        <option value="2"{{ $getRecord->manager_id == '2' ? 'selected' : '' }}>Ali Haider</option>
+                                        <option value="">Select Manager</option>
+                                        @foreach ($getManager as $value)
+                                        <option value="{{ $value->id }}" {{ $value->id == $getRecord->manager_id ? 'selected' : '' }}>{{ $value->manager_name }}</option>
+                                        @endforeach
                                     </select>
                                     <span style="color:red">{{ $errors->first('manager_id') }}</span>
 
                                     </div>
                                 </div>
 
-
                                 <div class="form-group row">
                                     <label for="" class="col-sm-2 col-form-label">Department Name <span style="color:red">*</span> </label>
                                     <div class="col-sm-10">
                                     <select name="department_id" id="" class="form-control" required>
-                                        <option value="">Select Department Name</option>
-                                        <option value="1"{{ $getRecord->department_id == '1' ? 'selected' : '' }}>LIMS</option>
-                                        <option value="2" {{ $getRecord->department_id == '2' ? 'selected' : '' }}>GPI</option>
+                                        <option value="">Select Department</option>
+                                        @foreach ($getDepartment as $value)
+                                            <option value="{{ $value->id }}" {{ $value->id == $getRecord->department_id ? 'selected' : '' }}>{{ $value->department_name }}</option>
+                                        @endforeach
                                     </select>
                                     <span style="color:red">{{ $errors->first('department_id') }}</span>
 

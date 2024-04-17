@@ -86,8 +86,9 @@ x
                                     <div class="col-sm-10">
                                         <select name="department_id" id="department_id" class="form-control">
                                             <option value="">Department</option>
-                                            <option value="0">Lims</option>
-                                            <option value="1">GPI</option>
+                                            @foreach ($getDepartment as $value)
+                                                <option value="{{ $value->id }}"{{ $value->id == $getRecord->department_id ? 'selected' : '' }}>{{ $value->department_name }}</option>
+                                            @endforeach
                                         </select>
                                         <span class="color:red">{{ $errors->first('department_id') }}</span>
                                     </div>

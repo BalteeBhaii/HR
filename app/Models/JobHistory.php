@@ -62,4 +62,8 @@ class JobHistory extends Model
     }
 
 
+    public function get_department_single(){
+        return $this->belongsTo(Department::class , 'department_id');
+    }
+
 }
