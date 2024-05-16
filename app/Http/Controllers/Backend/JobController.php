@@ -28,6 +28,7 @@ class JobController extends Controller
 
     public function add_post(Request $request){
 
+
         $job = request()->validate([
             'job_title' => 'required',
             'min_salary' => 'required',

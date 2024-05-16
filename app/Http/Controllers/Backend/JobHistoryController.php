@@ -29,7 +29,7 @@ class JobHistoryController extends Controller
     public function add(){
 
         $data['getJobs'] = EmployeeJob::get();
-        $data['getEmployees'] = User::where('is_role' , 0)->get();
+        $data['getEmployees'] = User::get();
         $data['getDepartment'] = Department::get();
         return view('backend.job_history.add', $data);
 

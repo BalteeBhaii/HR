@@ -48,7 +48,7 @@
                                     <tr>
                                         <td>{{ $record->id }}</td>
                                         <td>{{ $record->department_name }}</td>
-                                        <td>{{ $record->manager_id }}</td>
+                                        <td>{{ !empty($record->get_single_manager_name->manager_name) ? $record->get_single_manager_name->manager_name : '' }}</td>
                                         <td>{{ $record->city .' '. $record->street_address  }}</td>
                                         <td>{{ date('d-m-Y H:i A' , strtotime($record->created_at)) }}</td>
                                         <td>

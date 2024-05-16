@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Auth;
+use Str;
 
 class MyAccountController extends Controller
 {
@@ -17,6 +18,7 @@ class MyAccountController extends Controller
 
     public function update(Request $request){
 
+
         $request->validate([
             'email' => 'unique:users,email,'.Auth::user()->id
         ]);
@@ -24,6 +26,18 @@ class MyAccountController extends Controller
         $user = User::find(auth()->user()->id);
         $user->name = trim($request->name);
         $user->email = trim($request->email);
+
+        if(!empty($request->file('profile_image'))){
+            if(!empty($user->profile_image) && file_exists('upload/'.$user->profile_image)){
+                unlink('upload/'.$user->profile_image);
+            }
+
+            $file = $request->file('profile_image');
+            $strRandom  = Str::random(30);
+            $fileName = $strRandom.'.'.$file->getClientOriginalExtension();
+            $file->move('upload/',$fileName);
+            $user->profile_image = $fileName;
+        }
 
         if(!empty($request->password)){
             $user->password = trim($request->password);

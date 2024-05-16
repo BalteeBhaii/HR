@@ -14,6 +14,9 @@ use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\DepartmentController;
 use App\Http\Controllers\Backend\ManagerController;
 use App\Http\Controllers\Backend\MyAccountController;
+use App\Http\Controllers\Backend\LeaveController;
+use App\Http\Controllers\Backend\PermissionController;
+use App\Http\Controllers\Backend\RoleController;
 
 
 
@@ -27,8 +30,8 @@ Route::post('login_post' , [AuthController::class, 'login_post']);
 
 
 // Admin HR
-Route::middleware([AdminMiddleware::class])->group(function(){
-
+// Route::middleware([AdminMiddleware::class])->group(function(){
+    Route::group(['middleware' => [AdminMiddleware::class]], function () {
     // Employee
     Route::get('admin/dashboard', [DashboardController::class , 'dashboard']);
     Route::get('admin/employees' , [EmployeeController::class , 'index']);
@@ -113,6 +116,25 @@ Route::get('admin/jobs', [Jobcontroller::class , 'index']);
     Route::get('admin/my_account', [MyAccountController::class , 'index']);
     Route::post('admin/my_account/update', [MyAccountController::class, 'update']);
 
+
+    // Leave Application
+    Route::get('admin/leave' , [LeaveController::class , 'leave']);
+    Route::post('admin/leave/apply' , [LeaveController::class , 'apply']);
+
+
+    // Permission
+    Route::resource('admin/permissions' , PermissionController::class);
+    Route::get('admin/permissions/delete/{permissionId}', [PermissionController::class, 'destroy']);
+    // Role
+
+    Route::resource('admin/roles' , RoleController::class);
+    Route::get('admin/roles/delete/{roleId}', [RoleController::class,  'destroy'])->middleware('permission:delete role');
+    Route::get('admin/roles/{roleId}/give-permissions' , [RoleController::class, 'addPermissionToRole']);
+    Route::put('admin/roles/{roleId}/give-permissions' , [RoleController::class, 'givePermissionToRole']);
+
+
+    // Attendance
+    Route::get('admin/attendance' , [AttendanceController::class , 'index'])->name('attendance');
 
 });
 

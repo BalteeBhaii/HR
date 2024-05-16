@@ -19,7 +19,6 @@ class ManagerController extends Controller
 
     public function add_post(Request $request){
 
-
         $user = request()->validate([
             'manager_name' => 'required',
             'manager_email' => 'required',

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Department;
 use App\Models\Location;
+use App\Models\Manager;
 
 class DepartmentController extends Controller
 {
@@ -16,6 +17,7 @@ class DepartmentController extends Controller
 
     public function add(){
         $data['getLocation']  = Location::get();
+        $data['getManager'] = Manager::get();
         return view('backend.department.add' , $data);
     }
 
@@ -41,6 +43,7 @@ class DepartmentController extends Controller
 
         $data['getDepartment'] = Department::find($id);
         $data['getLocation'] = Location::get();
+        $data['getManager'] = Manager::get();
 
         return view('backend.department.edit', $data);
     }

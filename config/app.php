@@ -123,9 +123,12 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+
     // 'providers' => ServiceProvider::defaultProviders()->merge([
+    //     Spatie\Permission\PermissionServiceProvider::class,
     //     'Excel' => Maatwebsite\Excel\Facades\Excel::class
     // ])->toArray(),
+
 
     // 'aliases' => Facade::defaultAliases()->merge([
     //     'Excel' => Maatwebsite\Excel\Facades\Excel::class

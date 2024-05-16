@@ -48,8 +48,9 @@ x
                                     <div class="col-sm-10">
                                     <select name="manager_id" id="" class="form-control" required>
                                         <option value="">Select Manager Name</option>
-                                        <option value="1">Mohsin</option>
-                                        <option value="2">Ali Haider</option>
+                                        @foreach ($getManager as $value)
+                                            <option value="{{ $value->id }}"{{ $value->id == $getDepartment->manager_id ? 'selected' : '' }}>{{ $value->manager_name }}</option>
+                                        @endforeach
                                     </select>
                                     <span style="color:red">{{ $errors->first('manager_id') }}</span>
 

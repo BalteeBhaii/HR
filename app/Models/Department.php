@@ -21,4 +21,8 @@ class Department extends Model
         return $return;
 
     }
+
+    public function get_single_manager_name(){
+        return $this->belongsTo(Manager::class , 'manager_id');
+    }
 }

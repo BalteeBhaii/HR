@@ -79,7 +79,9 @@
                                             <th>First Name</th>
                                             <th>Last Name</th>
                                             <th>Email</th>
-                                            <th>IsRole</th>
+                                            <th>Profile Image</th>
+                                            {{-- <th>IsRole</th> --}}
+                                            <th>Roles</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -90,9 +92,23 @@
                                                 <td>{{ $value->name ?? '' }}</td>
                                                 <td>{{ $value->last_name ?? '' }}</td>
                                                 <td>{{ $value->email ?? '' }}</td>
-                                                <td><span class="{{ !empty($value->is_role) ? 'badge bg-warning text-dark' : 'badge bg-info text-dark' }}">
+                                                <td>
+                                                    @if(!empty($value->profile_image))
+                                                    @if(file_exists(public_path('upload/'.$value->profile_image)))
+                                                      <img src="{{ url('upload/'.$value->profile_image) }}" height="80px" width="80px" class="rounded-circle"/>
+                                                      @endif
+                                                    @endif
+                                                </td>
+                                                {{-- <td><span class="{{ !empty($value->is_role) ? 'badge bg-warning text-dark' : 'badge bg-info text-dark' }}">
                                                     {{ !empty($value->is_role) ? 'HR' : 'Employee' }}
-                                                </span></td>
+                                                </span></td> --}}
+                                                <td>
+                                                    @if(!empty($value->getRoleNames()))
+                                                    @foreach($value->getRoleNames() as $role)
+                                                    <label for="" class="badge badge-primary mx-1">{{ $role }}</label>
+                                                    @endforeach
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <a href="{{ url('admin/employees/view/'.$value->id) }}" class="btn btn-info">View</a>
                                                     <a href="{{ url('admin/employees/edit/'.$value->id) }}" class="btn btn-primary">Edit</a>

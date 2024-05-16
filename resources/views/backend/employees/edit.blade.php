@@ -28,7 +28,7 @@
                         <div class="card-header">
                             <h3 class="card-title"> Edit Employee </h3>
                         </div>
-                        <form action="{{ url('admin/employees/edit/'.$getRecord->id) }}" class="form-horizontal" method="POST">
+                        <form action="{{ url('admin/employees/edit/'.$getRecord->id) }}" class="form-horizontal" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="card-body">
                                 <div class="form-group row">
@@ -70,6 +70,16 @@
 
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 col-form-label">Profile Image <span style="color:red">*</span> </label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" name="profile_image">
+                                        <span style="color:red">{{ $errors->first('profile_image') }}</span>
+
+                                    </div>
+                                </div>
+
 
                                 <div class="form-group row">
                                     <label for="" class="col-sm-2 col-form-label">Job Title <span style="color:red">*</span> </label>
@@ -127,6 +137,24 @@
                                     <span style="color:red">{{ $errors->first('department_id') }}</span>
 
                                     </div>
+                                </div>
+
+                                <div class="form-group row">
+
+                                        <label for="">Roles</label>
+                                        <select name="roles[]" class="form-control" multiple>
+                                            <option value="">Select Role</option>
+                                            @foreach ($roles as $role)
+                                            <option
+                                                value="{{ $role }}"
+                                                {{ in_array($role, $userRoles) ? 'selected':'' }}
+                                            >
+                                                {{ $role }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                        @error('roles') <span class="text-danger">{{ $message }}</span> @enderror
+
                                 </div>
 
                                 <div class="card-footer">

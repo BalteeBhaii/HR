@@ -55,14 +55,19 @@ class AuthController extends Controller
 
     public function login_post(Request $request){
 
+        // if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+        //     if(Auth::User()->is_role == '1'){
+        //         return redirect()->intended('admin/dashboard');
+        //     }else{
+        //         return redirect('/')->with('error', 'No HR avialable...');
+        //     }
+        // }else{
+        //     return redirect()->back()->with('error', 'Invalid login credentials..');
+        // }
+
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            if(Auth::User()->is_role == '1'){
-                return redirect()->intended('admin/dashboard');
-            }else{
-                return redirect('/')->with('error', 'No HR avialable...');
-            }
-        }else{
-            return redirect()->back()->with('error', 'Invalid login credentials..');
+
+                    return redirect()->intended('admin/dashboard');
         }
     }
 
